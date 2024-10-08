@@ -6,6 +6,7 @@ public class SingletonTest {
 
         Logger logger = Logger.getInstance();
         logger.log("Main....");
+        // Das ist eine Änderung
 
         machWas();
 
