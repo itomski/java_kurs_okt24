@@ -2,6 +2,8 @@ package de.lubowiecki.okt24;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
+import java.util.StringJoiner;
 
 public class Person implements Serializable {
 
@@ -56,6 +58,22 @@ public class Person implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        System.out.println("EQUALS: " + vorname + " == " + person.vorname);
+        return raucher == person.raucher && Objects.equals(vorname, person.vorname) && Objects.equals(nachname, person.nachname) && Objects.equals(geburtsDatum, person.geburtsDatum);
+    }
+
+    @Override
+    public int hashCode() {
+        System.out.println("HASHCODE: " + vorname);
+        return Objects.hash(vorname, nachname, geburtsDatum, raucher);
+    }
+
+    /*
+    @Override
     public String toString() {
         return "Person{" +
                 "nr=" + nr +
@@ -64,5 +82,18 @@ public class Person implements Serializable {
                 ", geburtsDatum=" + geburtsDatum +
                 ", raucher=" + raucher +
                 '}';
+    }
+    */
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Person{");
+        sb.append("nr=").append(nr)
+            .append(", vorname='").append(vorname).append('\'')
+            .append(", nachname='").append(nachname).append('\'')
+            .append(", geburtsDatum=").append(geburtsDatum)
+            .append(", raucher=").append(raucher)
+            .append('}');
+        return sb.toString();
     }
 }
