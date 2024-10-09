@@ -28,7 +28,6 @@ public class ListTest2 {
         // remove()
         // removeAll()
         // retainAll()
-        // iterator()
         // toArray()
 
         // TODO: Aufgabe 2
@@ -36,7 +35,7 @@ public class ListTest2 {
         // In einer Liste befinden sich einige Spielkarten
         // Mische das Deck durch
 
-        //Collections.binarySearch()
+        //Collections.binarySearch();
         //Collections.shuffle();
         //Collections.reverse();
 
