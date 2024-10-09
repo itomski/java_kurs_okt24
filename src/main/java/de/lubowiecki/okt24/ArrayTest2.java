@@ -67,5 +67,17 @@ public class ArrayTest2 {
         zahlen4 = new double[]{1.0, 2.0, 3.0}; // Ok
         //zahlen4 = new double[100]{5,7,19,88,7}; // Error
         zahlen4 = new double[100]; // Ok: freie Plätze werden mit Standardwert aufgefüllt
+
+        String[] namen = {"Peter", "Bruce", "Carol", "Natasha", "Scott"};
+        // System.out.println(namen[-1]); // ArrayIndexOutOfBoundsException
+        // System.out.println(namen[10]); // ArrayIndexOutOfBoundsException
+        // namen = new String[-10]; // NegativeArraySizeException
+
+        namen = new String[10];
+        // namen[0] = 123; // 123 ist kein String
+        Object[] objArr = namen;
+        // objArr[0] = 123; // ArrayStoreException, das Array auf dem Heap ist ein String-Array
+
+
     }
 }

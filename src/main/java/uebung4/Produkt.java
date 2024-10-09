@@ -1,8 +1,9 @@
 package uebung4;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Produkt {
+public class Produkt implements Serializable {
 
     private String name;
     private String beschreibung;
@@ -11,13 +12,14 @@ public class Produkt {
     private double preis;
 
     public Produkt() {
+        this.imBestandSeit = LocalDate.now();
     }
 
     public Produkt(String name, String beschreibung, int menge, double preis) {
+        this();
         this.name = name;
         this.beschreibung = beschreibung;
         this.menge = menge;
-        this.imBestandSeit = LocalDate.now();
         this.preis = preis;
     }
 
