@@ -25,6 +25,12 @@ public class Person implements Serializable {
         nr = ++count;
     }
 
+    public Person(String vorname, String nachname) {
+        this();
+        this.vorname = vorname;
+        this.nachname = nachname;
+    }
+
     public String getVorname() {
         return vorname;
     }
@@ -62,13 +68,13 @@ public class Person implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        System.out.println("EQUALS: " + vorname + " == " + person.vorname);
+        //System.out.println("EQUALS: " + vorname + " == " + person.vorname);
         return raucher == person.raucher && Objects.equals(vorname, person.vorname) && Objects.equals(nachname, person.nachname) && Objects.equals(geburtsDatum, person.geburtsDatum);
     }
 
     @Override
     public int hashCode() {
-        System.out.println("HASHCODE: " + vorname);
+        //System.out.println("HASHCODE: " + vorname);
         return Objects.hash(vorname, nachname, geburtsDatum, raucher);
     }
 
