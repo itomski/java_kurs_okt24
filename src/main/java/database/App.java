@@ -1,8 +1,6 @@
 package database;
 
 import java.sql.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class App {
@@ -15,8 +13,8 @@ public class App {
         try {
             final ProductRepository repo = new ProductRepository();
 
-            repo.save(repo.create());
-            //showProducts();
+            //repo.save(repo.create());
+            showProducts(repo.findAll());
         }
         catch (SQLException e) {
             e.printStackTrace();

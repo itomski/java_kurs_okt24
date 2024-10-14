@@ -15,11 +15,11 @@ public class ProductRepository {
         createTable();
     }
 
-    public List<Product> getProducts() throws SQLException {
+    public List<Product> findAll() throws SQLException {
 
         final String SQL = "SELECT * FROM " + TABLE;
 
-        try(Connection connection = DriverManager.getConnection("jdbc:sqlite:management.db");
+        try(Connection connection = DbUtils.getConnection();
             Statement stmt = connection.createStatement()) {
 
             ResultSet results = stmt.executeQuery(SQL);
@@ -31,6 +31,7 @@ public class ProductRepository {
         }
     }
 
+    // TODO: Zum Testen
     public Product create() {
         Product p = new Product();
         p.setName("Butter");
@@ -58,7 +59,7 @@ public class ProductRepository {
                 "VALUES(NULL, ?, ?, ?, ?, ?)";
 
         // PreparedStatements schützen vor SqlInjection
-        try(Connection connection = DriverManager.getConnection("jdbc:sqlite:management.db");
+        try(Connection connection = DbUtils.getConnection();
             PreparedStatement stmt = connection.prepareStatement(SQL)) {
             stmt.setString(1, product.getName());
             stmt.setString(2, product.getDescription());
@@ -80,7 +81,7 @@ public class ProductRepository {
                 "preis REAL," +
                 "PRIMARY KEY (id AUTOINCREMENT))";
 
-        try(Connection connection = DriverManager.getConnection("jdbc:sqlite:management.db");
+        try(Connection connection = DbUtils.getConnection();
             Statement stmt = connection.createStatement()) {
             stmt.execute(SQL);
         }
