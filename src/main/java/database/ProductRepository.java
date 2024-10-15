@@ -31,14 +31,60 @@ public class ProductRepository {
         }
     }
 
-    // TODO: Zum Testen
-    public Product create() {
+    public Product findAById(int id) throws SQLException {
+
+        final String SQL = "SELECT * FROM " + TABLE + " WHERE id = " + id;
+
+        try(Connection connection = DbUtils.getConnection();
+            Statement stmt = connection.createStatement()) {
+
+            ResultSet results = stmt.executeQuery(SQL);
+            if(results.next()) {
+                return create(results);
+            }
+            return null;
+        }
+    }
+
+    public void save(Product product) throws SQLException {
+
+        if(product.getId() <= 0) {
+            insert(product);
+        }
+        else {
+            update(product);
+        }
+    }
+
+    private void update(Product product) throws SQLException {
+
+        final String SQL = "UPDATE " + TABLE + " SET name = ?, " +
+                                "beschreibung = ?, " +
+                                "im_bestand_seit = ?, " +
+                                "menge = ?, " +
+                                "preis = ? " +
+                                "WHERE id = ?";
+
+        try(Connection connection = DbUtils.getConnection();
+            PreparedStatement stmt = connection.prepareStatement(SQL)) {
+
+            stmt.setString(1, product.getName());
+            stmt.setString(2, product.getDescription());
+            stmt.setString(3, product.getCreatedAt().toString());
+            stmt.setInt(4, product.getAmount());
+            stmt.setDouble(5, product.getPrice());
+            stmt.setInt(6, product.getId());
+            stmt.execute();
+        }
+    }
+
+    public Product create(String name, String beschreibung, LocalDate imBestandSeit, int menge, double preis) {
         Product p = new Product();
-        p.setName("Butter");
-        p.setDescription("82% Fett");
-        p.setCreatedAt(LocalDate.now());
-        p.setAmount(100);
-        p.setPrice(1.99);
+        p.setName(name);
+        p.setDescription(beschreibung);
+        p.setCreatedAt(imBestandSeit);
+        p.setAmount(menge);
+        p.setPrice(preis);
         return p;
     }
 
@@ -53,7 +99,7 @@ public class ProductRepository {
         return p;
     }
 
-    public void save(Product product) throws SQLException {
+    private void insert(Product product) throws SQLException {
 
         final String SQL = "INSERT INTO " + TABLE + " (id, name, beschreibung, im_bestand_seit, menge, preis) " +
                 "VALUES(NULL, ?, ?, ?, ?, ?)";
@@ -67,6 +113,20 @@ public class ProductRepository {
             stmt.setInt(4, product.getAmount());
             stmt.setDouble(5, product.getPrice());
             stmt.execute();
+        }
+    }
+
+    public void delete(Product product) throws SQLException {
+        deleteById(product.getId());
+    }
+
+    public void deleteById(int id) throws SQLException {
+
+        final String SQL = "DELETE FROM " + TABLE + " WHERE id = " + id;
+
+        try(Connection connection = DbUtils.getConnection();
+            Statement stmt = connection.createStatement()) {
+            stmt.executeUpdate(SQL);
         }
     }
 

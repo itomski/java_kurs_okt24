@@ -1,6 +1,7 @@
 package database;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.List;
 
 public class App {
@@ -13,8 +14,27 @@ public class App {
         try {
             final ProductRepository repo = new ProductRepository();
 
-            //repo.save(repo.create());
+            // READ
             showProducts(repo.findAll());
+            //Product p = repo.findAById(6);
+            //System.out.println(p);
+
+
+            // CREATE
+            //Product p = repo.create("Milch", "1,5% Fett", LocalDate.now().minusDays(1), 100, 1.29);
+            //repo.save(p);
+
+            // DELETE
+            //repo.deleteById(9);
+            //repo.delete(p);
+
+            // UPDATE
+            Product p = repo.findAById(10);
+            p.setPrice(1.59);
+            p.setAmount(500);
+            p.setName("H-Milch");
+            repo.save(p);
+
         }
         catch (SQLException e) {
             e.printStackTrace();
