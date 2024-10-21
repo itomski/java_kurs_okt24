@@ -4,7 +4,7 @@ public class VererbungTest2 {
 
     public static void main(String[] args) {
 
-        Student s = new Student();
+        NextStudent s = new NextStudent();
 
     }
 }
