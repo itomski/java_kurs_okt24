@@ -6,7 +6,8 @@ public class AufgabeExport {
     // Export kann in Excel oder JSON erfolgen
     // Import aus Excel
 
-    // Lagere die Zugangsdaten für die Datenbank (die URL) in eine XML datei aus,
+    // Lagere die Zugangsdaten für die Datenbank (die URL) in eine XML/Properties Datei aus,
     // die beim Start des Programms eigelesen wird
+
 
 }
