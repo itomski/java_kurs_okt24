@@ -9,5 +9,4 @@ public class AufgabeExport {
     // Lagere die Zugangsdaten für die Datenbank (die URL) in eine XML/Properties Datei aus,
     // die beim Start des Programms eigelesen wird
 
-
 }
