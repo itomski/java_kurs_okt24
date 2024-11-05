@@ -16,5 +16,14 @@ public class ArgsTest {
                 System.out.println(s);
             }
         }
+
+        byte b = 10;
+        //b = 128;
+        //showByte(10);
+
+    }
+
+    static void showByte(byte b) {
+        System.out.println(b);
     }
 }
