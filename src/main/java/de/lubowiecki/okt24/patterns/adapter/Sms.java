@@ -12,7 +12,7 @@ public class Sms implements Message {
         this.fromNr = fromNr;
         this.toNr = toNr;
         if(body.length() > MAX_LENGTH) {
-            this.body = body.substring(0, MAX_LENGTH) + "...";
+            this.body = body.substring(0, MAX_LENGTH /* Bla bla bla */) + "...";
         }
         else {
             this.body = body;

@@ -2,7 +2,7 @@ package de.lubowiecki.okt24;
 
 import java.util.UUID;
 
-public class ArrayList {
+public class ArrayListX {
 
     public static void main(String[] args) {
 

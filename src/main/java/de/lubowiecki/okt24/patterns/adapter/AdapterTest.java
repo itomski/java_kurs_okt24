@@ -1,5 +1,6 @@
 package de.lubowiecki.okt24.patterns.adapter;
 
+// Top-Level-Klasse: darf public oder package-private sein
 public class AdapterTest {
 
     public static void main(String[] args) {
@@ -13,6 +14,11 @@ public class AdapterTest {
                 "Bla bla bla bla bla...", "spider", "web", "ny", "cool");
 
         server.send(new TweetToMassageAdapter(tweet));
+
+    }
+
+    // Innere-Klasse: alle Access-Modifier sind erlaubt
+    class Xyz {
 
     }
 }
