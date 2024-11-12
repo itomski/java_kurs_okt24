@@ -102,4 +102,16 @@ public class Person implements Serializable {
             .append('}');
         return sb.toString();
     }
+
+
+//    @Override
+//    public String toString() {
+//        return new StringJoiner(", ", Person.class.getSimpleName() + "[", "]")
+//                .add("nr=" + nr)
+//                .add("vorname='" + vorname + "'")
+//                .add("nachname='" + nachname + "'")
+//                .add("geburtsDatum=" + geburtsDatum)
+//                .add("raucher=" + raucher)
+//                .toString();
+//    }
 }
