@@ -60,7 +60,6 @@ public class LambdaTest8 {
                 System.out.println("Ungültige Operation.");
             }
         }
-
     }
 }
 
