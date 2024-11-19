@@ -38,6 +38,19 @@ public class SearchTest {
         System.out.println(ld.getMonth());
 
 
+        for (int i = 0; i < 10 ; i++)
+            for (int j = 0; j < 20; j++)
+                System.out.println(i + j);
+
+        int i = 0;
+        int j = 0;
+
+        // i und j bekommen neue Werte
+        for (i = 10, j = 20; i < 10 ; i++) System.out.println(i + j);
+
+        // i und j wird redeklariert: Error
+        //for (int i = 10, j = 20; i < 10 ; i++) System.out.println(i + j);
+
     }
 
     static int find(List<String> list, String needle) {
